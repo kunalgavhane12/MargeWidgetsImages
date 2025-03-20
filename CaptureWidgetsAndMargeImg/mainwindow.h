@@ -17,13 +17,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-private slots:
+public slots:
+    void grabAllImage();
     void grabAllTabs(); // Slot to grab all tabs' contents
+
+    void grabAllTabs(QWidget *widget);
 
 private slots:
     void onTabChanged(int index); // Slot to handle tab changes
 
 private:
+    void mergeImage(const QStringList &imagePaths, const QSize &targetSize, bool deleteSourceImages);
     void mergeImage(); // Function to merge captured images
 
     Ui::MainWindow *ui; // UI object
